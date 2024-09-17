@@ -3,7 +3,7 @@
 
 	import Icon from '@iconify/svelte';
     import { onMount } from 'svelte';
-	import anime from 'animejs/lib/anime.es.js';
+	import anime from 'animejs';
 
     let min = 5;
     let sec = 0;
