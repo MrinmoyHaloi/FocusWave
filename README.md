@@ -3,10 +3,10 @@
 ## Developing
 
 ```bash
-bun run dev
+bun dev
 
 # or start the server and open the app in a new browser tab
-bun run dev -- --open
+bun dev -- --open
 ```
 
 ## Building
