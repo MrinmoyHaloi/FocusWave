@@ -23,22 +23,22 @@
 		</div>
 		<p class="text-sm text-slate-400">Change your focus here and add notes</p>
 		<div class="grid gap-3 *:items-center">
-			<div class="grid gap-2 sm:grid-cols-4">
-				<label for="work" class="font-medium sm:text-right">Focusing on</label>
+			<div class="grid gap-2">
+				<label for="work" class="font-medium">Focusing on</label>
 				<input
 					id="work"
 					name="current work"
 					type="text"
-					class="col-span-3 h-10 rounded px-3 outline-none focus:ring-2"
+					class="col-span-3 h-10 rounded px-3 outline-none ring-1 focus:ring-2"
 					autofocus
 					bind:value={currentWork.work}
 				/>
 			</div>
-			<div class="grid gap-2 sm:grid-cols-4">
-				<label for="note" class="font-medium sm:text-right">Note</label>
+			<div class="grid gap-2">
+				<label for="note" class="font-medium">Note</label>
 				<textarea
 					id="note"
-					class="col-span-3 resize-none rounded px-3 py-2 outline-none focus:ring-2"
+					class="col-span-3 resize-none rounded px-3 py-2 outline-none ring-1 focus:ring-2"
 					bind:value={currentWork.note}
 				></textarea>
 			</div>
