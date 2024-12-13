@@ -1,5 +1,5 @@
 <svg
-	class="arc"
+	class="arc max-sm:hidden"
 	width="400"
 	height="1122.52"
 	viewBox="0 0 105.833 297"
@@ -29,7 +29,7 @@
 	/>
 </svg>
 <svg
-	class="arc2"
+	class="arc2 max-sm:hidden"
 	width="400"
 	height="1122.52"
 	viewBox="0 0 105.833 297"

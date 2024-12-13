@@ -57,10 +57,10 @@
 	</div>
 </dialog>
 
-<main class="flex h-full flex-col justify-end px-7 pb-5">
-	<div class="z-10">
+<main class="relative flex flex-col justify-end px-7 pb-5 max-sm:flex-col-reverse sm:h-full">
+	<div class="z-10 max-sm:mt-6 max-sm:text-center">
 		<span class="text-gray-400">I'm Focusing on</span>
-		<span class="flex items-center gap-1 text-lg font-semibold">
+		<span class="flex items-center gap-1 text-lg font-semibold max-sm:justify-center">
 			{work}
 			<button
 				on:click={() => {

@@ -76,9 +76,11 @@
 	// supa hot code
 </script>
 
-<div class="timer flex font-bold">
+<div class="timer flex h-fit text-center text-6xl font-bold max-sm:flex-col">
 	<span class="min">{formattedMin}</span>
-	<div class="controls flex flex-col justify-center px-4 text-5xl text-black">
+	<div
+		class="controls bottom-0 left-1/2 flex max-sm:-translate-x-1/2 max-sm:translate-y-20 justify-center px-4 text-5xl text-black max-sm:absolute sm:flex-col"
+	>
 		<button on:click={toggleTimer} class="play">
 			{#if timerStatus == 'paused'}
 				<Icon icon={'bi:play-fill'} />
@@ -100,15 +102,27 @@
 		background-clip: text;
 		line-height: clamp(7rem, 20vw, 24rem);
 		font-size: clamp(7rem, 24vw, 28rem);
+		@media screen and (width < 640px) {
+			font-size: 13rem;
+			line-height: 13rem;
+		}
+		@media screen and (width < 350px) {
+			font-size: 10rem;
+			line-height: 10rem;
+		}
+		
 	}
 
 	.controls {
 		gap: 2rem;
+		@media screen and (max-width: 768px) {
+			gap: 0.5rem;
+		}
 		.add {
 			color: white;
 			background: linear-gradient(to bottom, rgba(148, 148, 148, 1) 0%, rgba(70, 70, 70, 1) 100%);
 		}
-		* {
+		button {
 			background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
 			border-radius: 50%;
 			padding: 0.5rem;
@@ -117,6 +131,10 @@
 			&:hover {
 				transform: scale(1.1);
 				box-shadow: 0 0 50px rgba(223, 223, 223, 0.45);
+			}
+			@media screen and (width < 768px) {
+				// padding: 0.3rem;
+				scale: 0.8;
 			}
 		}
 	}
