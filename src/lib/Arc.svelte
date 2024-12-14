@@ -65,13 +65,13 @@
 		top: 0;
 		z-index: -10;
 		height: 100vh;
-		right: 5rem;
+		right: 7rem;
 	}
 	.arc2 {
 		position: absolute;
 		top: 0;
 		z-index: -11;
 		height: 100vh;
-		right: 5rem;
+		right: 7rem;
 	}
 </style>

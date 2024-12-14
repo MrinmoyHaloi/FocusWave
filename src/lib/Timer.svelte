@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import anime from 'animejs';
 
-	let min = 5;
+	let min = 1;
 	let sec = 0;
 
 	$: formattedMin = min < 10 ? `0${min}` : min;
@@ -16,8 +16,9 @@
 	let timerStatus = 'paused';
 
 	onMount(() => {
+
 		arcAnimation = anime({
-			targets: '.arc path',
+			targets: ['.arc path', '.arcH g path'],
 			strokeDashoffset: [anime.setDashoffset, 0],
 			easing: 'linear',
 			duration: totalTime ? totalTime : 1000,
@@ -106,7 +107,7 @@
 			font-size: 13rem;
 			line-height: 13rem;
 		}
-		@media screen and (width < 350px) {
+		@media screen and (width < 400px) {
 			font-size: 10rem;
 			line-height: 10rem;
 		}

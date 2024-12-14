@@ -2,6 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import Timer from '$lib/Timer.svelte';
 	import Arc from '$lib/Arc.svelte';
+	import ArcHorizontal from '$lib/Arc-horizontal.svelte';
 
 	let currentWork = {
 		work: 'Creating FocusWave design',
@@ -76,6 +77,7 @@
 </main>
 
 <Arc />
+<ArcHorizontal />
 
 <style lang="scss">
 	.work-dialog {
