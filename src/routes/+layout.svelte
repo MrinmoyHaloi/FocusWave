@@ -36,7 +36,7 @@
         padding: 3px;
         border: 2px dotted #2242d2;
         border-radius: 11px;
-        animation: rotate 3s infinite forwards linear;
+        // animation: rotate 3s infinite forwards linear;
     }
 	@keyframes rotate {
 		from {
