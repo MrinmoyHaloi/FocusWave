@@ -29,7 +29,7 @@
 		background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
 		background-clip: text;
 	}
-	:global(.music-icon) {  
+	:global(.music-icon) {
         padding: 2px;
 	}
     .outer-ring {
