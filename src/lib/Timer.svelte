@@ -57,6 +57,7 @@
 					if (min == 0) {
 						// if the interval is done i.e. min is 0, clear the interval
 						// console.log('Timer done');
+						alert('Timer done!');
 						clearInterval(interval);
 						interval = null;
 						timerStatus = 'done';
