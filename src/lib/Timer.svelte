@@ -3,29 +3,27 @@
 	import { onMount } from 'svelte';
 	import anime from 'animejs';
 
-	let min = 1;
-	let sec = 0;
+	let min = $state(1);
+	let sec = $state(0);
 
-	$: formattedMin = min < 10 ? `0${min}` : min;
-	$: formattedSec = sec < 10 ? `0${sec}` : sec;
+	let formattedMin = $derived(min < 10 ? `0${min}` : min);
+	let formattedSec = $derived(sec < 10 ? `0${sec}` : sec);
 
 	let arcAnimation;
-	$: totalTime = min * 60000 + sec * 1000;
+	let totalTime = $derived(min * 60000 + sec * 1000);
 
 	let interval;
-	let timerStatus = 'paused';
+	let timerStatus = $state('paused');
 
 	onMount(() => {
-
 		arcAnimation = anime({
 			targets: ['.arc path', '.arcH g path'],
-			strokeDashoffset: [[anime.setDashoffset, 333], [anime.setDashoffset, 0]],
+			strokeDashoffset: [anime.setDashoffset, 0],
 			easing: 'linear',
 			duration: totalTime ? totalTime : 1000,
 			autoplay: false
 		});
 	});
-
 	// toggle the timer
 	const toggleTimer = () => {
 		// console.log('Toggling timer. Current status:', timerStatus);
@@ -83,7 +81,7 @@
 	<div
 		class="controls bottom-0 left-1/2 flex max-sm:-translate-x-1/2 max-sm:translate-y-20 justify-center px-4 text-5xl text-black max-sm:absolute sm:flex-col"
 	>
-		<button on:click={toggleTimer} class="play">
+		<button onclick={toggleTimer} class="play">
 			{#if timerStatus == 'paused'}
 				<Icon icon={'bi:play-fill'} />
 			{:else if timerStatus == 'running'}

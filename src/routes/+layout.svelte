@@ -1,6 +1,13 @@
 <script>
 	import '../app.scss';
 	import Icon from '@iconify/svelte';
+	/**
+	 * @typedef {Object} Props
+	 * @property {import('svelte').Snippet} [children]
+	 */
+
+	/** @type {Props} */
+	let { children } = $props();
 </script>
 
 <div class="flex justify-between px-7 py-5">
@@ -21,7 +28,7 @@
 		/>
 	</button>
 </div>
-<slot></slot>
+{@render children?.()}
 
 <style lang="scss">
 	h1 {

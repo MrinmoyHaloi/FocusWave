@@ -4,21 +4,21 @@
 	import Arc from '$lib/Arc.svelte';
 	import ArcHorizontal from '$lib/Arc-horizontal.svelte';
 
-	let currentWork = {
+	let currentWork = $state({
 		work: 'Creating FocusWave design',
 		note: ''
-	};
+	});
 
-	let work = 'Creating FocusWave design';
+	let work = $state('Creating FocusWave design');
 
-	let dialog;
+	let dialog = $state();
 </script>
 
 <dialog class="work-dialog" bind:this={dialog}>
 	<div class="container">
 		<div class="flex justify-between">
 			<h1 class="text-xl font-semibold">Change Focus</h1>
-			<button class="hover:opacity-75" on:click={dialog.close()}>
+			<button class="hover:opacity-75" onclick={dialog.close()}>
 				<Icon icon="mdi:close" width="1.25rem" height="1.25rem" />
 			</button>
 		</div>
@@ -46,7 +46,7 @@
 		</div>
 		<div class="flex-cols flex sm:flex-row sm:justify-end sm:space-x-2">
 			<button
-				on:click={() => {
+				onclick={() => {
 					work = currentWork.work;
 					dialog.close();
 				}}
@@ -64,7 +64,7 @@
 		<span class="flex items-center gap-1 text-lg font-semibold max-sm:justify-center">
 			{work}
 			<button
-				on:click={() => {
+				onclick={() => {
 					const dialog = document.querySelector('dialog');
 					dialog.showModal();
 				}}
