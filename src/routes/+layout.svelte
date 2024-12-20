@@ -1,5 +1,6 @@
 <script>
 	import '../app.scss';
+	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
 	/**
 	 * @typedef {Object} Props
@@ -8,17 +9,67 @@
 
 	/** @type {Props} */
 	let { children } = $props();
+	let player;
+	let videoId = 'jfKfPfyJRdk'
+	let isPlaying = $state(false);
+
+	function handlePlayPause() {
+		togglePlay();
+		isPlaying = !isPlaying;
+	}
+	onMount(() => {
+		// Load YouTube IFrame API
+		const tag = document.createElement('script');
+		tag.src = 'https://www.youtube.com/iframe_api';
+		const firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		window.onYouTubeIframeAPIReady = () => {
+			player = new YT.Player('youtube-player', {
+				height: '0',
+				width: '0',
+				videoId: videoId,
+				playerVars: {
+					autoplay: 1,
+					controls: 0,
+					mute: 0
+				},
+				events: {
+					onReady: (event) => {
+						event.target.playVideo();
+					}
+				}
+			});
+			console.log(player)
+		};
+	});
+
+	function togglePlay() {
+		if (player) {
+			const state = player.getPlayerState();
+			if (state === 1) {
+				// playing
+				player.pauseVideo();
+			} else {
+				player.playVideo();
+			}
+		}
+	}
 </script>
 
 <div class="flex justify-between px-7 py-5">
 	<div>
 		<h1 class="text-4xl font-bold">FocusWave</h1>
 		<span class="mt-3 flex items-center gap-1 text-gray-400">
-            Lofi hip hop radio - Lofi Girl 
-            <div class="outer-ring">
-                <Icon icon="mdi:music" class="music-icon animate"/>
-            </div>
-        </span>
+			Lofi hip hop radio - Lofi Girl
+			<div class="outer-ring">
+				<Icon icon="mdi:music" class="music-icon animate" />
+			</div>
+			<div id="youtube-player"></div>
+			<button onclick={handlePlayPause} class="outer-ring">
+				<Icon icon={isPlaying ? "mdi:pause" : "mdi:play"} class="music-icon animate" />
+			  </button>
+		</span>
 	</div>
 	<button class="profile-btn">
 		<img
@@ -37,14 +88,14 @@
 		background-clip: text;
 	}
 	:global(.music-icon) {
-        padding: 2px;
+		padding: 2px;
 	}
-    .outer-ring {
-        padding: 3px;
-        border: 2px dotted #2242d2;
-        border-radius: 11px;
-        // animation: rotate 3s infinite forwards linear;
-    }
+	.outer-ring {
+		padding: 3px;
+		border: 2px dotted #2242d2;
+		border-radius: 11px;
+		// animation: rotate 3s infinite forwards linear;
+	}
 	@keyframes rotate {
 		from {
 			transform: rotate(0);
