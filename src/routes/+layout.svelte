@@ -61,7 +61,7 @@
 	<div>
 		<h1 class="text-4xl font-bold">FocusWave</h1>
 		<span class="mt-3 flex items-center gap-1 text-gray-400">
-			Lofi hip hop radio - Lofi Girl
+			Lofi hip hop radio
 			<div id="youtube-player"></div>
 			<button onclick={handlePlayPause} class="outer-ring">
 				<Icon icon={isPlaying ? "mdi:pause" : "mdi:play"} class="music-icon animate" />
