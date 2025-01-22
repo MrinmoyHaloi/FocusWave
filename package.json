@@ -2,6 +2,7 @@
 	"name": "focuswave",
 	"version": "0.0.1",
 	"private": true,
+	"author": "Mrinmoy Haloi",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
