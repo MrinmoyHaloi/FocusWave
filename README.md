@@ -1,6 +1,7 @@
 # FocusWave
 
 ## Developing
+Once you've cloned the repo and installed dependencies with `bun install` (or `npm install` or `yarn`), start a development server:
 
 ```bash
 bun dev
