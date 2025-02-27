@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 	import '../app.scss';
+	import { Howl } from 'howler';
 	import { onMount } from 'svelte';
 	/**
 	 * @typedef {Object} Props
@@ -8,8 +9,7 @@
 
 	/** @type {Props} */
 	let { children } = $props();
-	let player;
-	let videoId = 'jfKfPfyJRdk';
+	let player:any;
 	let isPlaying = $state(false);
 
 	function handlePlayPause() {
@@ -17,41 +17,19 @@
 		isPlaying = !isPlaying;
 	}
 	onMount(() => {
-		// Load YouTube IFrame API
-		const tag = document.createElement('script');
-		tag.src = 'https://www.youtube.com/iframe_api';
-		const firstScriptTag = document.getElementsByTagName('script')[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-		window.onYouTubeIframeAPIReady = () => {
-			player = new YT.Player('youtube-player', {
-				height: '0',
-				width: '0',
-				videoId: videoId,
-				playerVars: {
-					autoplay: 1,
-					controls: 0,
-					mute: 0
-				},
-				events: {
-					onReady: (event) => {
-						event.target.playVideo();
-					}
-				}
-			});
-			console.log(player);
-		};
+		player = new Howl({
+			src: ['https://stream.zeno.fm/v5reddyk8rhvv'],
+			html5: true,
+			preload: true,
+		});
 	});
 
 	function togglePlay() {
-		if (player) {
-			const state = player.getPlayerState();
-			if (state === 1) {
-				// playing
-				player.pauseVideo();
-			} else {
-				player.playVideo();
-			}
+		console.log('Playing...');
+		if (player.playing()) {
+			player.pause();
+		} else {
+			player.play();
 		}
 	}
 </script>
