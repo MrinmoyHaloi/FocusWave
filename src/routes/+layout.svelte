@@ -1,7 +1,6 @@
 <script>
 	import '../app.scss';
 	import { onMount } from 'svelte';
-	import Icon from '@iconify/svelte';
 	/**
 	 * @typedef {Object} Props
 	 * @property {import('svelte').Snippet} [children]
@@ -10,7 +9,7 @@
 	/** @type {Props} */
 	let { children } = $props();
 	let player;
-	let videoId = 'jfKfPfyJRdk'
+	let videoId = 'jfKfPfyJRdk';
 	let isPlaying = $state(false);
 
 	function handlePlayPause() {
@@ -40,7 +39,7 @@
 					}
 				}
 			});
-			console.log(player)
+			console.log(player);
 		};
 	});
 
@@ -64,8 +63,28 @@
 			Lofi hip hop radio
 			<div id="youtube-player"></div>
 			<button onclick={handlePlayPause} class="outer-ring">
-				<Icon icon={isPlaying ? "mdi:pause" : "mdi:play"} class="music-icon animate" />
-			  </button>
+				{#if isPlaying}
+					<svg
+						class="music-icon"
+						xmlns="http://www.w3.org/2000/svg"
+						width="1em"
+						height="1em"
+						viewBox="0 0 24 24"
+					>
+						<path fill="currentColor" d="M14 19h4V5h-4M6 19h4V5H6z" />
+					</svg>
+				{:else}
+					<svg
+						class="music-icon"
+						xmlns="http://www.w3.org/2000/svg"
+						width="1em"
+						height="1em"
+						viewBox="0 0 24 24"
+					>
+						<path fill="currentColor" d="M8 5.14v14l11-7z" />
+					</svg>
+				{/if}
+			</button>
 		</span>
 	</div>
 	<button class="profile-btn">
