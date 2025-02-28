@@ -48,7 +48,7 @@
 	<div>
 		<h1 class="text-4xl font-bold">FocusWave</h1>
 		<span class="mt-3 flex items-center gap-1">
-			<select id="stationSelect" bind:this={streamSelect} onchange={handleStreamChange}>
+			<select class="station-select" bind:this={streamSelect} onchange={handleStreamChange}>
 				<option value="https://stream.zeno.fm/v5reddyk8rhvv">MoE Lofi</option>
 				<option value="http://streams.dez.ovh:8000/radio.mp3">Chillhop Radio</option>
 				<option value="https://stream.zeno.fm/dhen0gaenzzuv">Lofi Synthwave</option>
@@ -94,6 +94,20 @@
 		color: transparent;
 		background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
 		background-clip: text;
+	}
+	.station-select {
+		padding: 0.3rem 0.5rem;
+		margin: 0 0.5rem;
+		border-radius: 0.5rem;
+		border: 1px solid #2242d2;
+		background: #ffffff4a;
+		appearance: none;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 9l6 6l6-6'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right center;
+		option {
+			background-color: #424242;
+		}
 	}
 	:global(.music-icon) {
 		padding: 2px;
