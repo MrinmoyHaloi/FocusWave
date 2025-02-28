@@ -62,7 +62,7 @@
 	<div class="z-10 max-sm:mt-6 max-sm:text-center">
 		<span class="text-gray-400">I'm Focusing on</span>
 		<span class="flex items-center gap-1 text-lg font-semibold max-sm:justify-center">
-			{work}
+			<span class="truncate max-w-72">{work}</span>
 			<button
 				onclick={() => {
 					const dialog = document.querySelector('dialog');
