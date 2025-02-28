@@ -95,35 +95,6 @@
 		background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
 		background-clip: text;
 	}
-	.loader {
-		position: relative;
-		&::after {
-			content: '';
-			display: inline-block;
-			width: 50%;
-			background: linear-gradient(to left, #fff 0%, rgb(143, 144, 157) 100%);
-			height: 3px;
-			position: absolute;
-			bottom: -2px;
-			left: 50%;
-			transform: translateX(-50%);
-			// animation: animateGradient 1s alternate infinite;
-
-			@keyframes animateGradient {
-				0% {
-					opacity: 30%;
-				}
-				100% {
-					opacity: 100%;
-				}
-			}
-		}
-		&.playing {
-			&::after {
-				animation: animateGradient 1s alternate infinite;
-			}
-		}
-	}
 	:global(.music-icon) {
 		padding: 2px;
 	}
