@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '../app.scss';
-	import { Howl } from 'howler';
 	import { onMount } from 'svelte';
 	/**
 	 * @typedef {Object} Props
@@ -9,48 +8,38 @@
 
 	/** @type {Props} */
 	let { children } = $props();
-	let player: any;
+	let audio: HTMLAudioElement;
+	let streamSelect: HTMLSelectElement;
 	let isPlaying = $state(false);
-	let firstTime = true;
-	let playerState = $state('Paused');
-	let loader: HTMLSpanElement;
+	let streamState = $state('Paused');
 
-	function handlePlayPause() {
-		togglePlay();
-		isPlaying = !isPlaying;
-	}
 	onMount(() => {
-		player = new Howl({
-			src: ['https://stream.zeno.fm/v5reddyk8rhvv'],
-			html5: true,
-			onplay: () => {
-				playerState = 'Playing';
-				loader.classList.add('playing');
-			},
-			onpause: () => {
-				playerState = 'Paused';
-				loader.classList.remove('playing');
-			},
-			onplayerror: () => {
-				playerState = 'Error';
-			}
+		audio = new Audio(streamSelect.value);
+		audio.addEventListener('waiting', () => {
+			streamState = 'Loading...';
+		});
+		audio.addEventListener('playing', () => {
+			isPlaying = true;
+			streamState = 'Playing';
+		});
+		audio.addEventListener('pause', () => {
+			isPlaying = false;
+			streamState = 'Paused';
 		});
 	});
 
 	function togglePlay() {
-		if (firstTime) {
-			playerState = 'Loading...';
-			player.play();
-			console.log('Playing...');
-			firstTime = false;
+		if (audio.paused) {
+			audio.play().catch(() => {});
 		} else {
-			if (player.playing()) {
-				player.pause();
-				console.log('Pausing...');
-			} else {
-				player.play();
-				console.log('Playing...');
-			}
+			audio.pause();
+		}
+	}
+
+	function handleStreamChange() {
+		audio.src = streamSelect.value;
+		if (isPlaying) {
+			audio.play();
 		}
 	}
 </script>
@@ -58,10 +47,14 @@
 <div class="flex justify-between px-7 py-5">
 	<div>
 		<h1 class="text-4xl font-bold">FocusWave</h1>
-		<span class="mt-3 flex items-center gap-1 text-gray-400">
-			Lofi hip hop radio - <span class="loader" bind:this={loader}>{playerState}</span>
-			<div id="youtube-player"></div>
-			<button onclick={handlePlayPause} class="outer-ring">
+		<span class="mt-3 flex items-center gap-1">
+			<select id="stationSelect" bind:this={streamSelect} onchange={handleStreamChange}>
+				<option value="https://stream.zeno.fm/v5reddyk8rhvv">MoE Lofi</option>
+				<option value="http://streams.dez.ovh:8000/radio.mp3">Chillhop Radio</option>
+				<option value="https://stream.zeno.fm/dhen0gaenzzuv">Lofi Synthwave</option>
+			</select>
+			<div>{streamState}</div>
+			<button class="outer-ring" onclick={togglePlay}>
 				{#if isPlaying}
 					<svg
 						class="music-icon"
