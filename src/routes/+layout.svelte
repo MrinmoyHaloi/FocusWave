@@ -9,8 +9,11 @@
 
 	/** @type {Props} */
 	let { children } = $props();
-	let player:any;
+	let player: any;
 	let isPlaying = $state(false);
+	let firstTime = true;
+	let playerState = $state('Paused');
+	let loader: HTMLSpanElement;
 
 	function handlePlayPause() {
 		togglePlay();
@@ -20,16 +23,34 @@
 		player = new Howl({
 			src: ['https://stream.zeno.fm/v5reddyk8rhvv'],
 			html5: true,
-			preload: true,
+			onplay: () => {
+				playerState = 'Playing';
+				loader.classList.add('playing');
+			},
+			onpause: () => {
+				playerState = 'Paused';
+				loader.classList.remove('playing');
+			},
+			onplayerror: () => {
+				playerState = 'Error';
+			}
 		});
 	});
 
 	function togglePlay() {
-		console.log('Playing...');
-		if (player.playing()) {
-			player.pause();
-		} else {
+		if (firstTime) {
+			playerState = 'Loading...';
 			player.play();
+			console.log('Playing...');
+			firstTime = false;
+		} else {
+			if (player.playing()) {
+				player.pause();
+				console.log('Pausing...');
+			} else {
+				player.play();
+				console.log('Playing...');
+			}
 		}
 	}
 </script>
@@ -38,7 +59,7 @@
 	<div>
 		<h1 class="text-4xl font-bold">FocusWave</h1>
 		<span class="mt-3 flex items-center gap-1 text-gray-400">
-			Lofi hip hop radio
+			Lofi hip hop radio - <span class="loader" bind:this={loader}>{playerState}</span>
 			<div id="youtube-player"></div>
 			<button onclick={handlePlayPause} class="outer-ring">
 				{#if isPlaying}
@@ -75,19 +96,48 @@
 </div>
 {@render children?.()}
 
-<style lang="scss">
+<style lang="scss" global>
 	h1 {
 		color: transparent;
 		background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
 		background-clip: text;
+	}
+	.loader {
+		position: relative;
+		&::after {
+			content: '';
+			display: inline-block;
+			width: 50%;
+			background: linear-gradient(to left, #fff 0%, rgb(143, 144, 157) 100%);
+			height: 3px;
+			position: absolute;
+			bottom: -2px;
+			left: 50%;
+			transform: translateX(-50%);
+			// animation: animateGradient 1s alternate infinite;
+
+			@keyframes animateGradient {
+				0% {
+					opacity: 30%;
+				}
+				100% {
+					opacity: 100%;
+				}
+			}
+		}
+		&.playing {
+			&::after {
+				animation: animateGradient 1s alternate infinite;
+			}
+		}
 	}
 	:global(.music-icon) {
 		padding: 2px;
 	}
 	.outer-ring {
 		padding: 3px;
-		border: 2px dotted #2242d2;
-		border-radius: 11px;
+		border: 2px solid #2242d2;
+		border-radius: 50px;
 		// animation: rotate 3s infinite forwards linear;
 	}
 	@keyframes rotate {
