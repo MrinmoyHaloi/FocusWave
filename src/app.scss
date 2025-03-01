@@ -3,6 +3,12 @@
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+* {
+    &:focus {
+        outline: 2px solid #182e91;
+    }
+}
+
 html, body {
     height: 100%;
     margin: 0;
