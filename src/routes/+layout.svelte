@@ -106,9 +106,6 @@
 		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 9l6 6l6-6'/%3E%3C/svg%3E");
 		background-repeat: no-repeat;
 		background-position: right center;
-		&:focus {
-			outline: none;
-		}
 		option {
 			background-color: #424242;
 		}
