@@ -47,36 +47,38 @@
 <div class="flex justify-between px-7 py-5">
 	<div>
 		<h1 class="text-4xl font-bold">FocusWave</h1>
-		<span class="mt-3 flex items-center gap-1">
+		<span class="mt-3 flex flex-wrap items-center gap-x-1 gap-y-2">
 			<select class="station-select me-2" bind:this={streamSelect} onchange={handleStreamChange}>
 				<option value="https://stream.zeno.fm/v5reddyk8rhvv">MoE Lofi</option>
 				<option value="http://streams.dez.ovh:8000/radio.mp3">Chillhop Radio</option>
 				<option value="https://stream.zeno.fm/dhen0gaenzzuv">Lofi Synthwave</option>
 			</select>
-			<div>{streamState}</div>
-			<button class="outer-ring" onclick={togglePlay}>
-				{#if isPlaying}
-					<svg
-						class="music-icon"
-						xmlns="http://www.w3.org/2000/svg"
-						width="1em"
-						height="1em"
-						viewBox="0 0 24 24"
-					>
-						<path fill="currentColor" d="M14 19h4V5h-4M6 19h4V5H6z" />
-					</svg>
-				{:else}
-					<svg
-						class="music-icon"
-						xmlns="http://www.w3.org/2000/svg"
-						width="1em"
-						height="1em"
-						viewBox="0 0 24 24"
-					>
-						<path fill="currentColor" d="M8 5.14v14l11-7z" />
-					</svg>
-				{/if}
-			</button>
+			<div class="flex gap-1">
+				<div>{streamState}</div>
+				<button class="outer-ring" onclick={togglePlay}>
+					{#if isPlaying}
+						<svg
+							class="music-icon"
+							xmlns="http://www.w3.org/2000/svg"
+							width="1em"
+							height="1em"
+							viewBox="0 0 24 24"
+						>
+							<path fill="currentColor" d="M14 19h4V5h-4M6 19h4V5H6z" />
+						</svg>
+					{:else}
+						<svg
+							class="music-icon"
+							xmlns="http://www.w3.org/2000/svg"
+							width="1em"
+							height="1em"
+							viewBox="0 0 24 24"
+						>
+							<path fill="currentColor" d="M8 5.14v14l11-7z" />
+						</svg>
+					{/if}
+				</button>
+			</div>
 		</span>
 	</div>
 	<button class="profile-btn">
