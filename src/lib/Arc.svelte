@@ -23,7 +23,7 @@
 		/>
 	</defs>
 	<path
-		style="fill:none;stroke:url(#b);stroke-width:10.5834;stroke-linecap:round;stroke-dasharray:330;stroke-dashoffset:330px"
+		style="fill:none;stroke:url(#b);stroke-width:10.5834;stroke-linecap:round;"
 		d="M-4.542-16.385A292.212 279.048 0 0 1 307.483-53.1"
 		transform="matrix(.06173 .9981 -.9977 .06772 0 0)"
 	/>
@@ -53,7 +53,7 @@
 		/>
 	</defs>
 	<path
-		style="fill:none;stroke:url(#d);stroke-width:10.5834;stroke-linecap:square;stroke-dasharray:330"
+		style="fill:none;stroke:url(#d);stroke-width:10.5834;stroke-linecap:square;"
 		d="M-4.542-16.385A292.212 279.048 0 0 1 307.483-53.1"
 		transform="matrix(.06173 .9981 -.9977 .06772 0 0)"
 	/>

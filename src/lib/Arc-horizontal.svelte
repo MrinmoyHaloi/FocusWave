@@ -24,7 +24,7 @@
 	</defs>
 	<g id="layer1" transform="translate(111.3309,-181.3584)">
 		<path
-			style="fill:none;stroke:url(#f);stroke-width:10.5834;stroke-linecap:round;stroke-dasharray:333;stroke-dashoffset:333"
+			style="fill:none;stroke:url(#f);stroke-width:10.5834;stroke-linecap:round;"
 			id="path1"
 			d="M -83.921686,241.91085 A 292.2124,279.04846 0 0 1 228.10349,205.19576"
 			transform="matrix(0.99330395,0.11553034,-0.1095678,0.99397932,0,0)"
@@ -57,7 +57,7 @@
 	</defs>
 	<g id="layer1" transform="translate(111.3309,-181.3584)">
 		<path
-			style="fill:none;stroke:url(#h);stroke-width:10.5834;stroke-linecap:round;stroke-dasharray:none"
+			style="fill:none;stroke:url(#h);stroke-width:10.5834;stroke-linecap:round;"
 			id="path1"
 			d="M -83.921686,241.91085 A 292.2124,279.04846 0 0 1 228.10349,205.19576"
 			transform="matrix(0.99330395,0.11553034,-0.1095678,0.99397932,0,0)"
