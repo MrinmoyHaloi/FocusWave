@@ -49,9 +49,8 @@
 		<h1 class="text-4xl font-bold">FocusWave</h1>
 		<span class="mt-3 flex flex-wrap items-center gap-x-1 gap-y-2">
 			<select class="station-select me-2" bind:this={streamSelect} onchange={handleStreamChange}>
-				<option value="https://stream.zeno.fm/v5reddyk8rhvv">MoE Lofi</option>
-				<option value="http://streams.dez.ovh:8000/radio.mp3">Chillhop Radio</option>
-				<option value="https://stream.zeno.fm/dhen0gaenzzuv">Lofi Synthwave</option>
+				<option value="https://stream.zeno.fm/v5reddyk8rhvv">Lofi Radio</option>
+				<option value="https://stream.zeno.fm/dhen0gaenzzuv">Synthwave Radio</option>
 			</select>
 			<div class="flex gap-1">
 				<div>{streamState}</div>
