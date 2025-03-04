@@ -50,6 +50,7 @@
 		<span class="mt-3 flex flex-wrap items-center gap-x-1 gap-y-2">
 			<select class="station-select me-2" bind:this={streamSelect} onchange={handleStreamChange}>
 				<option value="https://stream.zeno.fm/v5reddyk8rhvv">Lofi Radio</option>
+				<option value="https://stream.zeno.fm/90fvpb27u18uv">Phonk Radio</option>
 				<option value="https://stream.zeno.fm/dhen0gaenzzuv">Synthwave Radio</option>
 			</select>
 			<div class="flex gap-1">
