@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import anime from 'animejs';
+	import { animate } from 'motion';
 
 	let min = $state(1);
 	let sec = $state(0);
@@ -9,19 +9,14 @@
 	let formattedSec = $derived(sec < 10 ? `0${sec}` : sec);
 
 	let arcAnimation;
-	let totalTime = $derived(min * 60000 + sec * 1000);
+	let totalTime = $derived(min * 60 + sec);
 
 	let interval;
 	let timerStatus = $state('paused');
 
 	onMount(() => {
-		arcAnimation = anime({
-			targets: ['.arc path', '.arcH g path'],
-			strokeDashoffset: [anime.setDashoffset, 0],
-			easing: 'linear',
-			duration: totalTime ? totalTime : 1000,
-			autoplay: false
-		});
+		arcAnimation = animate('.arc path, .arcH path', { pathLength: [0, 1] }, { duration: totalTime ? totalTime : 1000, ease: 'linear'});
+		arcAnimation.pause();
 	});
 	// toggle the timer
 	const toggleTimer = () => {
