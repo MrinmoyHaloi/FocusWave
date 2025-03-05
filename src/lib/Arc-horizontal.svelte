@@ -24,6 +24,9 @@
 	</defs>
 	<g id="layer1" transform="translate(111.3309,-181.3584)">
 		<path
+			stroke-dasharray="1"
+			pathLength="1"
+			stroke-dashoffset="1"
 			style="fill:none;stroke:url(#f);stroke-width:10.5834;stroke-linecap:round;"
 			id="path1"
 			d="M -83.921686,241.91085 A 292.2124,279.04846 0 0 1 228.10349,205.19576"
@@ -66,18 +69,18 @@
 </svg>
 
 <style lang="scss">
-	.arcH{
+	.arcH {
 		position: absolute;
 		bottom: -1rem;
 		left: 0;
-        width: 100%;
+		width: 100%;
 		z-index: -10;
 	}
 	.arcH2 {
 		position: absolute;
 		bottom: -1rem;
 		left: 0;
-        width: 100%;
+		width: 100%;
 		z-index: -11;
 	}
 </style>

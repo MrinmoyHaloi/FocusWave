@@ -23,6 +23,9 @@
 		/>
 	</defs>
 	<path
+		stroke-dasharray="1"
+		pathLength="1"
+		stroke-dashoffset="1"
 		style="fill:none;stroke:url(#b);stroke-width:10.5834;stroke-linecap:round;"
 		d="M-4.542-16.385A292.212 279.048 0 0 1 307.483-53.1"
 		transform="matrix(.06173 .9981 -.9977 .06772 0 0)"
