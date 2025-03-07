@@ -3,6 +3,7 @@
 	import Timer from '$lib/Timer.svelte';
 	import Arc from '$lib/Arc.svelte';
 	import ArcHorizontal from '$lib/Arc-horizontal.svelte';
+	import { onMount } from 'svelte';
 
 	let currentWork = $state({
 		work: 'Creating FocusWave design',
@@ -11,14 +12,51 @@
 
 	let work = $state('Creating FocusWave design');
 
-	let dialog = $state();
+	let dialog;
+
+	function openDialog() {
+		if (!document.startViewTransition) {
+			dialog.showModal();
+			return;
+		}
+
+		document.startViewTransition(() => {
+			dialog.showModal();
+		});
+	}
+
+	function closeDialog() {
+		if (!document.startViewTransition) {
+			dialog.close();
+			return;
+		}
+
+		document.startViewTransition(() => {
+			dialog.close();
+		});
+	}
+
+	function changeWork() {
+		work = currentWork.work;
+		closeDialog();
+	}
+
+	// animate dialog when escape is pressed
+	onMount(() => {
+		dialog.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') {
+				event.preventDefault()
+				closeDialog();
+			}
+		})
+	});
 </script>
 
-<dialog class="work-dialog" bind:this={dialog}>
+<dialog class="work-dialog" bind:this={dialog} style="view-transition-name: dialog;">
 	<div class="container">
 		<div class="flex justify-between">
 			<h1 class="text-xl font-semibold">Change Focus</h1>
-			<button class="hover:opacity-75" onclick={dialog.close()}>
+			<button class="hover:opacity-75" onclick={closeDialog}>
 				<Icon icon="mdi:close" width="1.25rem" height="1.25rem" />
 			</button>
 		</div>
@@ -46,10 +84,7 @@
 		</div>
 		<div class="flex-cols flex sm:flex-row sm:justify-end sm:space-x-2">
 			<button
-				onclick={() => {
-					work = currentWork.work;
-					dialog.close();
-				}}
+				onclick={changeWork}
 				class="inline-flex grow justify-center rounded bg-[#003ae5] px-3 py-2 font-medium text-white hover:opacity-85 sm:grow-0"
 			>
 				Change
@@ -62,13 +97,8 @@
 	<div class="z-10 max-sm:mt-6 max-sm:text-center">
 		<span class="text-gray-400">I'm Focusing on</span>
 		<span class="flex items-center gap-1 text-lg font-semibold max-sm:justify-center">
-			<span class="truncate max-w-72">{work}</span>
-			<button
-				onclick={() => {
-					const dialog = document.querySelector('dialog');
-					dialog.showModal();
-				}}
-			>
+			<span class="max-w-72 truncate">{work}</span>
+			<button onclick={openDialog}>
 				<Icon icon="mdi:square-edit-outline" />
 			</button>
 		</span>
@@ -92,6 +122,38 @@
 		}
 		&::backdrop {
 			background: rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+			transform: scale(0.8);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	@keyframes fade-out {
+		from {
+			opacity: 1;
+			transform: scale(1);
+		}
+		to {
+			opacity: 0;
+			transform: scale(0.8);
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		::view-transition-old(dialog) {
+			animation: 150ms fade-out ease-in-out forwards;
+		}
+
+		::view-transition-new(dialog) {
+			animation: 150ms fade-in ease-in-out forwards;
 		}
 	}
 </style>
