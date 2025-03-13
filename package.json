@@ -31,6 +31,7 @@
 	"type": "module",
 	"dependencies": {
 		"@iconify/svelte": "^4.0.2",
+		"@number-flow/svelte": "^0.3.5",
 		"caniuse-lite": "^1.0.30001703",
 		"motion": "^12.4.10"
 	}

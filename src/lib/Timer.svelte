@@ -1,12 +1,10 @@
 <script>
+	import NumberFlow from '@number-flow/svelte';
 	import { onMount } from 'svelte';
 	import { animate } from 'motion';
 
 	let min = $state(1);
 	let sec = $state(0);
-
-	let formattedMin = $derived(min < 10 ? `0${min}` : min);
-	let formattedSec = $derived(sec < 10 ? `0${sec}` : sec);
 
 	let arcAnimation;
 	let totalTime = $derived(min * 60 + sec);
@@ -15,7 +13,11 @@
 	let timerStatus = $state('paused');
 
 	onMount(() => {
-		arcAnimation = animate('.arc path, .arcH path', { pathLength: [0, 1] }, { duration: totalTime ? totalTime : 1000, ease: 'linear'});
+		arcAnimation = animate(
+			'.arc path, .arcH path',
+			{ pathLength: [0, 1] },
+			{ duration: totalTime ? totalTime : 1000, ease: 'linear' }
+		);
 		arcAnimation.pause();
 	});
 	// toggle the timer
@@ -71,32 +73,55 @@
 </script>
 
 <div class="timer flex h-fit text-center text-6xl font-bold max-sm:flex-col">
-	<span class="min">{formattedMin}</span>
+	<NumberFlow value={min} format={{ minimumIntegerDigits: 2 }} />
 	<div
-		class="controls bottom-0 left-1/2 flex max-sm:-translate-x-1/2 max-sm:translate-y-20 justify-center px-4 text-5xl text-black max-sm:absolute sm:flex-col"
+		class="controls bottom-0 left-1/2 flex justify-center px-4 text-5xl text-black max-sm:absolute max-sm:-translate-x-1/2 max-sm:translate-y-20 sm:flex-col"
 	>
 		<button onclick={toggleTimer} class="play">
 			{#if timerStatus == 'paused'}
-				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="m11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+					<path
+						fill="currentColor"
+						d="m11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"
+					/>
+				</svg>
 			{:else if timerStatus == 'running'}
-				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+					<path
+						fill="currentColor"
+						d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"
+					/>
+				</svg>
 			{:else}
-				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4c2.1 0 4.1.8 5.6 2.3c3.1 3.1 3.1 8.2 0 11.3c-1.8 1.9-4.3 2.6-6.7 2.3l.5-2c1.7.2 3.5-.4 4.8-1.7c2.3-2.3 2.3-6.1 0-8.5C15.1 6.6 13.5 6 12 6v4.6l-5-5l5-5zM6.3 17.6C3.7 15 3.3 11 5.1 7.9l1.5 1.5c-1.1 2.2-.7 5 1.2 6.8q.75.75 1.8 1.2l-.6 2q-1.5-.6-2.7-1.8"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+					<path
+						fill="currentColor"
+						d="M12 4c2.1 0 4.1.8 5.6 2.3c3.1 3.1 3.1 8.2 0 11.3c-1.8 1.9-4.3 2.6-6.7 2.3l.5-2c1.7.2 3.5-.4 4.8-1.7c2.3-2.3 2.3-6.1 0-8.5C15.1 6.6 13.5 6 12 6v4.6l-5-5l5-5zM6.3 17.6C3.7 15 3.3 11 5.1 7.9l1.5 1.5c-1.1 2.2-.7 5 1.2 6.8q.75.75 1.8 1.2l-.6 2q-1.5-.6-2.7-1.8"
+					/>
+				</svg>
 			{/if}
 		</button>
-		<button class="add" aria-label="Add extra minutes" onclick="{() => min += 1}">
-			<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg>
+		<button class="add" aria-label="Add extra minutes" onclick={() => (min += 1)}>
+			<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+				<path
+					fill="currentColor"
+					d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
+				/>
+			</svg>
 		</button>
 	</div>
-	<span class="second">{formattedSec}</span>
+	<NumberFlow value={sec} format={{ minimumIntegerDigits: 2 }} />
 </div>
 
-<style lang="scss">
+<style lang="scss" :global>
+	main {
+		--number-flow-mask-height: 0.1em;
+		--number-flow-char-height: 0.8em;
+	}
 	.timer {
-		color: transparent;
+		// color: transparent;
 		background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
 		background-clip: text;
-		line-height: clamp(7rem, 20vw, 24rem);
 		font-size: clamp(7rem, 24vw, 28rem);
 		@media screen and (width < 640px) {
 			font-size: 13rem;
@@ -106,11 +131,11 @@
 			font-size: 10rem;
 			line-height: 10rem;
 		}
-		
 	}
 
 	.controls {
 		gap: 2rem;
+		z-index: 1;
 		@media screen and (max-width: 768px) {
 			gap: 0.5rem;
 		}
@@ -119,7 +144,7 @@
 			background: linear-gradient(to bottom, rgba(148, 148, 148, 1) 0%, rgba(70, 70, 70, 1) 100%);
 		}
 		button {
-			background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
+			background: white;
 			border-radius: 50%;
 			padding: 0.5rem;
 			transition: 0.3s;
