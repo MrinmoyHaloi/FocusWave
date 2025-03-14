@@ -5,12 +5,13 @@
 	import ArcHorizontal from '$lib/Arc-horizontal.svelte';
 	import { onMount } from 'svelte';
 
-	let currentWork = $state({
-		work: 'Creating FocusWave design',
-		note: ''
-	});
-
-	let work = $state('Creating FocusWave design');
+	/** 
+	 * span element to display the work 
+	 * @type {string} 
+	 */
+	let workElement;
+	let work = $state('');
+	let note = $state('');
 
 	let dialog;
 
@@ -37,12 +38,20 @@
 	}
 
 	function changeWork() {
-		work = currentWork.work;
+		// save the work and note to localStorage and set the workElement textContent to the work
+		localStorage.setItem('work', work);
+		localStorage.setItem('note', note);
+		workElement.textContent = work;
 		closeDialog();
 	}
 
-	// animate dialog when escape is pressed
 	onMount(() => {
+		// get the work and note from localStorage and set the workElement textContent to the work
+		work = localStorage.getItem('work') || 'Creating FocusWave design';
+		note = localStorage.getItem('note');
+		workElement.textContent = work;
+		
+		// animate dialog when escape is pressed
 		dialog.addEventListener('keydown', (event) => {
 			if (event.key === 'Escape') {
 				event.preventDefault();
@@ -70,7 +79,7 @@
 					type="text"
 					class="col-span-3 h-10 rounded px-3 outline-none ring-1 focus:ring-2"
 					autofocus
-					bind:value={currentWork.work}
+					bind:value={work}
 				/>
 			</div>
 			<div class="grid gap-2">
@@ -78,7 +87,7 @@
 				<textarea
 					id="note"
 					class="col-span-3 resize-none rounded px-3 py-2 outline-none ring-1 focus:ring-2"
-					bind:value={currentWork.note}
+					bind:value={note}
 				></textarea>
 			</div>
 		</div>
@@ -97,7 +106,7 @@
 	<div class="z-10 max-sm:mt-6 max-sm:text-center">
 		<span class="text-gray-400">I'm Focusing on</span>
 		<span class="flex items-center gap-1 text-lg font-semibold max-sm:justify-center">
-			<span class="max-w-72 truncate">{work}</span>
+			<span class="max-w-72 truncate" bind:this={workElement}></span>
 			<button onclick={openDialog}>
 				<Icon icon="mdi:square-edit-outline" />
 			</button>
