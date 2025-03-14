@@ -121,7 +121,7 @@
 	}
 	.timer {
 		// color: transparent;
-		font-size: clamp(7rem, 24vw, 28rem);
+		font-size: clamp(7rem, 20vw, 28rem);
 		font-family: "Azeret Mono", monospace;
 		@media screen and (width < 640px) {
 			font-size: 13rem;
