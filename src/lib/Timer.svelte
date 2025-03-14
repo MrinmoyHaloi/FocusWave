@@ -4,7 +4,7 @@
 	import { animate } from 'motion';
 
 	let min = $state(1);
-	let sec = $state(0);
+	let sec = $state(25);
 
 	let arcAnimation;
 	let totalTime = $derived(min * 60 + sec);
@@ -16,7 +16,7 @@
 		arcAnimation = animate(
 			'.arc path, .arcH path',
 			{ pathLength: [0, 1] },
-			{ duration: totalTime ? totalTime : 1000, ease: 'linear' }
+			{ duration: totalTime, ease: 'linear' }
 		);
 		arcAnimation.pause();
 	});
@@ -29,7 +29,8 @@
 			min = 1;
 			sec = 0;
 			timerStatus = 'paused';
-			arcAnimation.seek(0);
+			arcAnimation.time = 0;
+			arcAnimation.play();
 			arcAnimation.pause();
 			return;
 		}
