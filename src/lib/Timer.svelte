@@ -120,9 +120,8 @@
 	}
 	.timer {
 		// color: transparent;
-		background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
-		background-clip: text;
 		font-size: clamp(7rem, 24vw, 28rem);
+		font-family: "Azeret Mono", monospace;
 		@media screen and (width < 640px) {
 			font-size: 13rem;
 			line-height: 13rem;
