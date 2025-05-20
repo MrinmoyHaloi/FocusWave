@@ -5,22 +5,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-    &:focus {
-        outline: none;
-    }
+	&:focus {
+		outline: none;
+	}
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    color-scheme: dark light;
+html,
+body {
+	height: 100%;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	color-scheme: dark light;
 }
 
 body {
-    color: theme('colors.white');
-    font-family: 'Outfit', sans-serif;
-    background-color: theme('colors.primary');
-    overflow: hidden;
+	color: theme('colors.white');
+	font-family: 'Outfit', sans-serif;
+	background-color: theme('colors.primary');
+	overflow: hidden;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+}
+
+::view-transition-old(dialog) {
+	animation: 150ms fade-out ease-in-out forwards;
+}
+
+::view-transition-new(dialog) {
+	animation: 150ms fade-in ease-in-out forwards;
+}
+::view-transition-old(timesUpDialog) {
+	animation: 150ms fade-out ease-in-out forwards;
+}
+
+::view-transition-new(timesUpDialog) {
+	animation: 150ms fade-in ease-in-out forwards;
 }

@@ -5,9 +5,9 @@
 	import ArcHorizontal from '$lib/Arc-horizontal.svelte';
 	import { onMount } from 'svelte';
 
-	/** 
-	 * span element to display the work 
-	 * @type {string} 
+	/**
+	 * span element to display the work
+	 * @type {string}
 	 */
 	let workElement;
 	let work = $state('');
@@ -50,7 +50,7 @@
 		work = localStorage.getItem('work') || 'Creating FocusWave design';
 		note = localStorage.getItem('note');
 		workElement.textContent = work;
-		
+
 		// animate dialog when escape is pressed
 		dialog.addEventListener('keydown', (event) => {
 			if (event.key === 'Escape') {
@@ -79,30 +79,28 @@
 					type="text"
 					class="col-span-3 h-10 rounded px-3 outline-none ring-1 focus:ring-2"
 					autofocus
-					bind:value={work}
-				/>
+					bind:value={work} />
 			</div>
 			<div class="grid gap-2">
 				<label for="note" class="font-medium">Note</label>
 				<textarea
 					id="note"
 					class="col-span-3 resize-none rounded px-3 py-2 outline-none ring-1 focus:ring-2"
-					bind:value={note}
-				></textarea>
+					bind:value={note}>
+				</textarea>
 			</div>
 		</div>
 		<div class="flex-cols flex sm:flex-row sm:justify-end sm:space-x-2">
 			<button
 				onclick={changeWork}
-				class="inline-flex grow justify-center rounded bg-[#003ae5] px-3 py-2 font-medium text-white hover:opacity-85 sm:grow-0"
-			>
+				class="inline-flex grow justify-center rounded bg-[#003ae5] px-3 py-2 font-medium text-white hover:opacity-85 sm:grow-0">
 				Change
 			</button>
 		</div>
 	</div>
 </dialog>
 
-<main class="relative flex flex-col justify-end px-7  max-sm:flex-col-reverse sm:h-full">
+<main class="relative flex flex-col justify-end px-7 max-sm:flex-col-reverse sm:h-full">
 	<div class="z-10 max-sm:mt-6 max-sm:text-center">
 		<span class="text-gray-400">I'm Focusing on</span>
 		<span class="flex items-center gap-1 text-lg font-semibold max-sm:justify-center">
@@ -131,38 +129,6 @@
 		}
 		&::backdrop {
 			background: rgba(0, 0, 0, 0.5);
-		}
-	}
-
-	@keyframes fade-in {
-		from {
-			opacity: 0;
-			transform: scale(0.8);
-		}
-		to {
-			opacity: 1;
-			transform: scale(1);
-		}
-	}
-
-	@keyframes fade-out {
-		from {
-			opacity: 1;
-			transform: scale(1);
-		}
-		to {
-			opacity: 0;
-			transform: scale(0.8);
-		}
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		::view-transition-old(dialog) {
-			animation: 150ms fade-out ease-in-out forwards;
-		}
-
-		::view-transition-new(dialog) {
-			animation: 150ms fade-in ease-in-out forwards;
 		}
 	}
 </style>
