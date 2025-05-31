@@ -39,8 +39,8 @@
 
 	function changeWork() {
 		// save the work and note to localStorage and set the workElement textContent to the work
-		localStorage.setItem('work', work);
-		localStorage.setItem('note', note);
+		localStorage.setItem('work', work ?? '');
+		localStorage.setItem('note', note ?? '');
 		workElement.textContent = work;
 		closeDialog();
 	}
