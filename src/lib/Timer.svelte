@@ -1,5 +1,5 @@
 <script>
-	import NumberFlow from '@number-flow/svelte';
+	import NumberFlow, { NumberFlowGroup } from '@number-flow/svelte';
 	import { onMount } from 'svelte';
 	import { animate } from 'motion';
 
@@ -163,11 +163,9 @@
 		font-family: 'Azeret Mono', monospace;
 		@media screen and (width < 640px) {
 			font-size: 13rem;
-			line-height: 13rem;
 		}
 		@media screen and (width < 400px) {
 			font-size: 10rem;
-			line-height: 10rem;
 		}
 	}
 
