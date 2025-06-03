@@ -13,7 +13,7 @@
 	let interval;
 	let timerStatus = $state('paused');
 
-	function openDialog() {
+	function openTimesUpDialog() {
 		if (!document.startViewTransition) {
 			timesUpDialog.showModal();
 			return;
@@ -68,30 +68,30 @@
 			// if the interval is not running, start the animation and the interval
 			// console.log('Starting timer');
 			arcAnimation.play();
-			interval = setInterval(() => {
-				if (sec == 0) {
-					// if the seconds are 0, decrement the minutes
-					if (min == 0) {
-						// if the interval is done i.e. min is 0, clear the interval
-						// console.log('Timer done');
-						openDialog();
-						clearInterval(interval);
-						interval = null;
-						timerStatus = 'done';
-					} else {
-						// if the minutes are not 0, decrement the minutes and set the seconds to 59
-						min--;
-						sec = 59;
-						// console.log('Decrementing minutes. New time:', min, 'minutes', sec, 'seconds');
-					}
-				} else {
-					// if the seconds are not 0, decrement the seconds
-					sec--;
-					// console.log('Decrementing seconds. New time:', min, 'minutes', sec, 'seconds');
-				}
-			}, 1000);
+			tick(); // Call once before setting up the interval to avoid initial delay
+			interval = setInterval(tick, 1000);
 		}
 	};
+
+	function tick() {
+		if (sec == 0) {
+			// if the seconds are 0, decrement the minutes
+			if (min == 0) {
+				// if the interval is done i.e. min is 0, clear the interval
+				openTimesUpDialog();
+				clearInterval(interval);
+				interval = null;
+				timerStatus = 'done';
+			} else {
+				// if the minutes are not 0, decrement the minutes and set the seconds to 59
+				min--;
+				sec = 59;
+			}
+		} else {
+			// if the seconds are not 0, decrement the seconds
+			sec--;
+		}
+	}
 	// supa hot code
 </script>
 
