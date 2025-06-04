@@ -177,7 +177,8 @@
 		box-shadow: 0 0 40px #18d9fb29;
 		text-align: center;
 		border-radius: 10rem;
-		background: linear-gradient(to bottom, rgba(36, 36, 36, 0.8) 0%, rgb(17, 17, 17, 0.82) 100%);
+		border: rgba(44, 44, 44, 0.8) solid 3px;
+		background: radial-gradient( at 50% -10%, rgba(63, 63, 63, 0.8) 0%, rgb(17, 17, 17, 0.82) 100%);
 		backdrop-filter: blur(10px);
 		.container {
 			display: flex;
