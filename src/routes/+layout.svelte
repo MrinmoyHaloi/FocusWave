@@ -88,7 +88,7 @@
 </div>
 {@render children?.()}
 
-<style lang="scss" global>
+<style lang="scss" >
 	h1 {
 		color: transparent;
 		background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);

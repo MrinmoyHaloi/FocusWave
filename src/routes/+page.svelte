@@ -69,7 +69,7 @@
 				<Icon icon="mdi:close" width="1.25rem" height="1.25rem" />
 			</button>
 		</div>
-		<p class="text-sm text-slate-400">Change your focus here and add notes</p>
+		<p class="text-sm text-gray-400">Change your focus here and add notes</p>
 		<div class="grid gap-3 *:items-center">
 			<div class="grid gap-2">
 				<label for="work" class="font-medium">Focusing on</label>
@@ -122,6 +122,9 @@
 		padding: 2rem;
 		border-radius: 1rem;
 		box-shadow: 0 0 40px #18d9fb29;
+		border: rgba(44, 44, 44, 0.8) solid 3px;
+		background: radial-gradient( at 50% -10%, rgba(63, 63, 63, 0.8) 0%, rgb(17, 17, 17, 0.82) 100%);
+		backdrop-filter: blur(10px);
 		.container {
 			display: flex;
 			flex-direction: column;
