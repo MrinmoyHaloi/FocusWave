@@ -126,7 +126,7 @@
 	}
 	.profile-btn {
 		img {
-			transition: 0.3s;
+			transition: 0.2s;
 		}
 		&:hover img {
 			box-shadow: 0 0 30px rgba(223, 223, 223, 0.7);
