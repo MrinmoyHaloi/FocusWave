@@ -225,7 +225,7 @@
 			background: white;
 			border-radius: 50%;
 			padding: 0.5rem;
-			transition: 0.3s;
+			transition: 0.2s;
 			box-shadow: 0 0 10px #0000005b;
 			&:hover {
 				transform: scale(1.1);
