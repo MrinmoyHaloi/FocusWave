@@ -9,7 +9,9 @@
 	let timesUpDialog;
 	let arcAnimation;
 	let totalTime = $derived(min * 60 + sec);
-
+	$effect(() => {
+		console.log('Total time in seconds:', totalTime);
+	})
 	let interval;
 	let timerStatus = $state('paused');
 
@@ -92,6 +94,16 @@
 			sec--;
 		}
 	}
+
+	function incrementTime() {
+		// increment the time by 1 minute
+		min += 1;
+		arcAnimation = animate(
+			'.arc path, .arcH path',
+			{ pathLength: [0, 1] },
+			{ duration: totalTime, ease: 'linear' }
+		);
+	}
 	// supa hot code
 </script>
 
@@ -142,7 +154,7 @@
 					</svg>
 				{/if}
 			</button>
-			<button class="add" aria-label="Add extra minutes" onclick={() => (min += 1)}>
+			<button class="add" aria-label="Add extra minutes" onclick={incrementTime}>
 				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
 					<path
 						fill="currentColor"
