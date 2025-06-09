@@ -9,9 +9,8 @@
 	let timesUpDialog;
 	let arcAnimation;
 	let totalTime = $derived(min * 60 + sec);
-	$effect(() => {
-		console.log('Total time in seconds:', totalTime);
-	})
+	
+
 	let interval;
 	let timerStatus = $state('paused');
 
