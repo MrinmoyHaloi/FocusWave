@@ -62,8 +62,7 @@
 							xmlns="http://www.w3.org/2000/svg"
 							width="1em"
 							height="1em"
-							viewBox="0 0 24 24"
-						>
+							viewBox="0 0 24 24">
 							<path fill="currentColor" d="M14 19h4V5h-4M6 19h4V5H6z" />
 						</svg>
 					{:else}
@@ -72,8 +71,7 @@
 							xmlns="http://www.w3.org/2000/svg"
 							width="1em"
 							height="1em"
-							viewBox="0 0 24 24"
-						>
+							viewBox="0 0 24 24">
 							<path fill="currentColor" d="M8 5.14v14l11-7z" />
 						</svg>
 					{/if}
@@ -85,8 +83,7 @@
 		<img
 			src="https://api.dicebear.com/9.x/adventurer/svg?seed=Jasper"
 			alt="user profile"
-			class="size-14 rounded-full border-2 bg-slate-700"
-		/>
+			class="size-14 rounded-full border-2 bg-slate-700" />
 	</button>
 </div>
 {@render children?.()}
