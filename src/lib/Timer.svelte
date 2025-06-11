@@ -9,7 +9,6 @@
 	let timesUpDialog;
 	let arcAnimation;
 	let totalTime = $derived(min * 60 + sec);
-	
 
 	let interval;
 	let timerStatus = $state('paused');
@@ -52,9 +51,24 @@
 			min = 1;
 			sec = 0;
 			timerStatus = 'paused';
-			arcAnimation.time = 0;
+			
+			// reverse the animation to show the arc go back
+			arcAnimation = animate(
+				'.arc path, .arcH path',
+				{ pathLength: [1, 0] },
+				{ duration: 0.5, ease: 'linear' }
+			);
 			arcAnimation.play();
-			arcAnimation.pause();
+
+			// reset animation to previous state  after reverse animation is done
+			arcAnimation.then(() => {
+				arcAnimation = animate(
+					'.arc path, .arcH path',
+					{ pathLength: [0, 1] },
+					{ duration: totalTime, ease: 'linear' }
+				);
+				arcAnimation.pause();
+			});
 			return;
 		}
 		timerStatus = 'running';
@@ -189,7 +203,7 @@
 		text-align: center;
 		border-radius: 10rem;
 		border: rgba(44, 44, 44, 0.8) solid 3px;
-		background: radial-gradient( at 50% -10%, rgba(63, 63, 63, 0.8) 0%, rgb(17, 17, 17, 0.82) 100%);
+		background: radial-gradient(at 50% -10%, rgba(63, 63, 63, 0.8) 0%, rgb(17, 17, 17, 0.82) 100%);
 		backdrop-filter: blur(10px);
 		.container {
 			display: flex;
