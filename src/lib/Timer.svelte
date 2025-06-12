@@ -203,8 +203,7 @@
 		text-align: center;
 		border-radius: 10rem;
 		border: rgba(44, 44, 44, 0.8) solid 3px;
-		background: radial-gradient(at 50% -10%, rgba(63, 63, 63, 0.8) 0%, rgb(17, 17, 17, 0.82) 100%);
-		backdrop-filter: blur(10px);
+		background: radial-gradient(at 50% -10%, rgba(63, 63, 63, 0.9) 0%, rgb(17, 17, 17, 0.95) 100%);
 		.container {
 			display: flex;
 			flex-direction: column;
