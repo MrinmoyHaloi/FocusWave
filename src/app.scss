@@ -62,3 +62,10 @@ body {
 ::view-transition-new(timesUpDialog) {
 	animation: 150ms fade-in ease-in-out forwards;
 }
+::view-transition-old(setTimeDialog) {
+	animation: 150ms fade-out ease-in-out forwards;
+}
+
+::view-transition-new(setTimeDialog) {
+	animation: 150ms fade-in ease-in-out forwards;
+}
