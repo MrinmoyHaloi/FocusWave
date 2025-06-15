@@ -262,8 +262,6 @@
 			padding: 0.2em 0.5em;
 			border: 2px solid #2242d2a7;
 			border-radius: 4rem;
-			// width: min-content;
-			// text-align: center;
 		}
 	}
 
