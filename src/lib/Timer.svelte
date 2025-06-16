@@ -166,7 +166,7 @@
 			</button>
 		</div>
 		<div class="flex gap-3 *:flex-1">
-			<div class="text-center text-2xl font-bold text-gray-400">
+			<div class="text-center text-2xl font-bold text-gray-400 grid">
 				<span>min</span>
 				<input type="number" name="min" id="min" min="0" max="60" bind:value={min} />
 			</div>
