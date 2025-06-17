@@ -8,6 +8,10 @@
 	let min = $state(1);
 	let sec = $state(0);
 
+	// Add temp values for the form
+	let tempMin = min;
+	let tempSec = sec;
+
 	let timesUpDialog;
 	let setTimeDialog;
 	let arcAnimation;
@@ -133,6 +137,13 @@
 			sec--;
 		}
 	}
+
+	function handleSetTimeSubmit(event) {
+		event.preventDefault();
+		min = tempMin;
+		sec = tempSec;
+		closeSetTimeDialog();
+	}
 	// supa hot code
 </script>
 
@@ -165,26 +176,25 @@
 				<Icon icon="mdi:close" width="1.25rem" height="1.25rem" />
 			</button>
 		</div>
-		<div class="flex gap-3 *:flex-1">
-			<div class="text-center text-2xl font-bold text-gray-400 grid">
-				<span>min</span>
-				<input type="number" name="min" id="min" min="0" max="60" bind:value={min} />
+		<form onsubmit={handleSetTimeSubmit}>
+			<div class="flex gap-3 *:flex-1">
+				<div class="grid text-center text-2xl font-bold text-gray-400">
+					<span>min</span>
+					<input type="number" name="min" id="min" min="0" max="60" bind:value={tempMin} />
+				</div>
+				<div class="text-center text-2xl font-bold text-gray-400">
+					<span>sec</span>
+					<input type="number" name="sec" id="sec" min="0" max="59" bind:value={tempSec} />
+				</div>
 			</div>
-			<div class="text-center text-2xl font-bold text-gray-400">
-				<span>sec</span>
-				<input type="number" name="sec" id="sec" min="0" max="59" bind:value={sec} />
+			<div>
+				<button
+					type="submit"
+					class="start-btn mt-4 rounded-full border border-slate-700 px-4 py-2 text-white">
+					Save
+				</button>
 			</div>
-		</div>
-		<div>
-			<button
-				class="start-btn mt-4 rounded-full border border-slate-700 px-4 py-2 text-white"
-				onclick={() => {
-					toggleTimer();
-					closeSetTimeDialog();
-				}}>
-				Start Timer
-			</button>
-		</div>
+		</form>
 	</div>
 </dialog>
 <div class="timer flex h-fit text-center text-6xl font-bold max-sm:flex-col">
