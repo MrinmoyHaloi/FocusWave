@@ -142,6 +142,14 @@
 		event.preventDefault();
 		min = tempMin;
 		sec = tempSec;
+		arcAnimation = animate(
+			'.arc path, .arcH path',
+			{ pathLength: [0, 1] },
+			{ duration: totalTime, ease: 'linear' }
+		);
+		if (timerStatus == 'paused') {
+			arcAnimation.pause();
+		}
 		closeSetTimeDialog();
 	}
 	// supa hot code
