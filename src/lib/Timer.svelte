@@ -1,4 +1,5 @@
 <script>
+	import TimesUpDialog from '$lib/TimesUpDialog.svelte';
 	import NumberFlow, { NumberFlowGroup } from '@number-flow/svelte';
 	import Icon from '@iconify/svelte';
 
@@ -19,28 +20,6 @@
 
 	let interval;
 	let timerStatus = $state('paused');
-
-	function openTimesUpDialog() {
-		if (!document.startViewTransition) {
-			timesUpDialog.showModal();
-			return;
-		}
-
-		document.startViewTransition(() => {
-			timesUpDialog.showModal();
-		});
-	}
-
-	function closeTimesUpDialog() {
-		if (!document.startViewTransition) {
-			timesUpDialog.close();
-			return;
-		}
-
-		document.startViewTransition(() => {
-			timesUpDialog.close();
-		});
-	}
 
 	function openSetTimeDialog() {
 		if (!document.startViewTransition) {
@@ -123,7 +102,7 @@
 			// if the seconds are 0, decrement the minutes
 			if (min == 0) {
 				// if the interval is done i.e. min is 0, clear the interval
-				openTimesUpDialog();
+				timesUpDialog.open();
 				clearInterval(interval);
 				interval = null;
 				timerStatus = 'done';
@@ -155,28 +134,9 @@
 	// supa hot code
 </script>
 
-<dialog class="times-up" bind:this={timesUpDialog} style="view-transition-name: timesUpDialog;">
-	<div class="container">
-		<h2 class="text-4xl font-bold">Time's up!</h2>
-		<p class="text-lg text-gray-300">
-			You have completed your focus session. Take a break and relax for a while or start again.
-		</p>
-		<div>
-			<button class="break-btn mt-4 rounded-full px-4 py-2 text-white" onclick={closeTimesUpDialog}>
-				Take a Break
-			</button>
-			<button
-				class="start-btn mt-4 rounded-full border border-slate-700 px-4 py-2 text-white"
-				onclick={() => {
-					toggleTimer();
-					closeTimesUpDialog();
-				}}>
-				Start Again
-			</button>
-		</div>
-	</div>
-</dialog>
-<dialog class="set-time" bind:this={setTimeDialog} style="view-transition-name: setTimeDialog;">
+<TimesUpDialog bind:this={timesUpDialog} {toggleTimer}/>
+
+<dialog class="set-time" bind:this={setTimeDialog} style="view-transition-name: dialog;">
 	<div class="container">
 		<div class="flex justify-between">
 			<h2 class="flex-1 text-center text-4xl font-semibold">Set time</h2>
@@ -280,45 +240,6 @@
 			padding: 0.2em 0.5em;
 			border: 2px solid #2242d2a7;
 			border-radius: 4rem;
-		}
-	}
-
-	.times-up {
-		max-width: 35rem;
-		padding: 3rem;
-		box-shadow: 0 0 40px #18d9fb29;
-		text-align: center;
-		border-radius: 10rem;
-		border: rgba(44, 44, 44, 0.8) solid 3px;
-		background: radial-gradient(at 50% -10%, rgba(63, 63, 63, 0.9) 0%, rgb(17, 17, 17, 0.95) 100%);
-		.container {
-			display: flex;
-			flex-direction: column;
-			gap: 1rem;
-		}
-		&::backdrop {
-			background: rgba(0, 0, 0, 0.5);
-		}
-		div {
-			display: flex;
-			justify-content: center;
-			gap: 1rem;
-			.break-btn {
-				background: linear-gradient(to bottom, #00e0ff 0%, #0001ff 100%);
-				box-shadow: 0 0 10px rgba(0, 224, 255, 0.5) inset;
-				&:hover {
-					background: linear-gradient(to bottom, #00e0ff 0%, #063cff 100%);
-					box-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
-				}
-			}
-			.start-btn {
-				background: transparent;
-				border: 1px solid #ffffff33;
-				&:hover {
-					background: rgba(255, 255, 255, 0.1);
-					box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-				}
-			}
 		}
 	}
 
