@@ -134,7 +134,7 @@
 	// supa hot code
 </script>
 
-<TimesUpDialog bind:this={timesUpDialog} {toggleTimer}/>
+<TimesUpDialog bind:this={timesUpDialog} {toggleTimer} />
 
 <dialog class="set-time" bind:this={setTimeDialog} style="view-transition-name: dialog;">
 	<div class="container">
@@ -148,11 +148,11 @@
 			<div class="flex gap-3 *:flex-1">
 				<div class="grid text-center text-2xl font-bold text-gray-400">
 					<span>min</span>
-					<input type="number" name="min" id="min" min="0" max="60" bind:value={tempMin} />
+					<input type="number" name="min" id="min" min="0" max="60" required bind:value={tempMin} />
 				</div>
 				<div class="text-center text-2xl font-bold text-gray-400">
 					<span>sec</span>
-					<input type="number" name="sec" id="sec" min="0" max="59" bind:value={tempSec} />
+					<input type="number" name="sec" id="sec" min="0" max="59" required bind:value={tempSec} />
 				</div>
 			</div>
 			<div>
