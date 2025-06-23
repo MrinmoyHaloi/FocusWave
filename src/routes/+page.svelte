@@ -1,9 +1,7 @@
 <script>
 	import Icon from '@iconify/svelte';
 	import Timer from '$lib/Timer.svelte';
-	import Arc from '$lib/Arc.svelte';
 	import WorkDialog from '$lib/WorkDialog.svelte';
-	import ArcHorizontal from '$lib/Arc-horizontal.svelte';
 	import { onMount } from 'svelte';
 
 	/**
@@ -46,6 +44,3 @@
 	</div>
 	<Timer />
 </main>
-
-<Arc />
-<ArcHorizontal />

@@ -88,7 +88,7 @@
 </div>
 {@render children?.()}
 
-<style lang="scss" >
+<style lang="scss">
 	h1 {
 		color: transparent;
 		background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
@@ -115,7 +115,6 @@
 		padding: 3px;
 		border: 2px solid #2242d2;
 		border-radius: 50px;
-		// animation: rotate 3s infinite forwards linear;
 	}
 	@keyframes rotate {
 		from {

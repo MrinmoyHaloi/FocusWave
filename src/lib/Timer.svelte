@@ -15,20 +15,13 @@
 
 	let timesUpDialog;
 	let setTimeDialog;
-	let arcAnimation;
+
 	let totalTime = $derived(min * 60 + sec);
 
 	let interval;
 	let timerStatus = $state('paused');
 
-	onMount(() => {
-		arcAnimation = animate(
-			'.arc path, .arcH path',
-			{ pathLength: [0, 1] },
-			{ duration: totalTime, ease: 'linear' }
-		);
-		arcAnimation.pause();
-	});
+	onMount(() => {});
 
 	// toggle the timer
 	const toggleTimer = () => {
@@ -39,38 +32,18 @@
 			min = 1;
 			sec = 0;
 			timerStatus = 'paused';
-
-			// reverse the animation to show the arc go back
-			arcAnimation = animate(
-				'.arc path, .arcH path',
-				{ pathLength: [1, 0] },
-				{ duration: 0.5, ease: 'linear' }
-			);
-			arcAnimation.play();
-
-			// reset animation to previous state  after reverse animation is done
-			arcAnimation.then(() => {
-				arcAnimation = animate(
-					'.arc path, .arcH path',
-					{ pathLength: [0, 1] },
-					{ duration: totalTime, ease: 'linear' }
-				);
-				arcAnimation.pause();
-			});
 			return;
 		}
 		timerStatus = 'running';
-		// if the interval is running, pause the animation and clear the interval
+		// if the interval is running, clear the interval
 		if (interval) {
 			// console.log('Pausing timer');
 			clearInterval(interval);
 			interval = null;
 			timerStatus = 'paused';
-			arcAnimation.pause();
 		} else {
-			// if the interval is not running, start the animation and the interval
+			// if the interval is not running, start the interval
 			// console.log('Starting timer');
-			arcAnimation.play();
 			tick(); // Call once before setting up the interval to avoid initial delay
 			interval = setInterval(tick, 1000);
 		}
@@ -100,14 +73,6 @@
 		event.preventDefault();
 		min = tempMin;
 		sec = tempSec;
-		arcAnimation = animate(
-			'.arc path, .arcH path',
-			{ pathLength: [0, 1] },
-			{ duration: totalTime, ease: 'linear' }
-		);
-		if (timerStatus == 'paused') {
-			arcAnimation.pause();
-		}
 		setTimeDialog.close();
 	}
 	// supa hot code

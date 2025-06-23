@@ -39,6 +39,7 @@
 		<div class="grid gap-3 *:items-center">
 			<div class="grid gap-2">
 				<label for="work" class="font-medium">Focusing on</label>
+				<!-- svelte-ignore a11y_autofocus -->
 				<input
 					id="work"
 					name="current work"
