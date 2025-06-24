@@ -32,10 +32,10 @@
 
 <WorkDialog bind:this={workDialog} {changeWork} bind:work bind:note />
 
-<main class="relative flex flex-col justify-end px-7 max-sm:flex-col-reverse sm:h-full">
-	<div class="z-10 max-sm:mt-6 max-sm:text-center">
+<main class="relative flex flex-col sm:m-auto px-7 max-sm:flex-col-reverse text-center">
+	<div class="z-10 max-sm:mt-6">
 		<span class="text-gray-400">I'm Focusing on</span>
-		<span class="flex items-center gap-1 text-lg font-semibold max-sm:justify-center">
+		<span class="flex gap-1 text-lg font-semibold justify-center">
 			<span class="max-w-72 truncate" bind:this={workElement}></span>
 			<button onclick={workDialog.open} class="hover:opacity-75">
 				<Icon icon="mdi:square-edit-outline" />
@@ -44,3 +44,4 @@
 	</div>
 	<Timer />
 </main>
+<div class="mb-auto"></div>
