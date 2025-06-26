@@ -44,10 +44,10 @@
 	}
 </script>
 
-<div class="flex justify-between px-7 py-5">
+<div class="flex justify-between px-7 py-5 relative">
 	<div>
 		<h1 class="text-4xl font-bold">FocusWave</h1>
-		<span class="mt-3 flex flex-wrap items-center gap-x-1 gap-y-2">
+		<span class="max-md:mt-3 md:flex-col flex flex-wrap items-center gap-x-1 gap-y-2 md:absolute top-1/2 left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
 			<select class="station-select me-2" bind:this={streamSelect} onchange={handleStreamChange}>
 				<option value="https://stream.zeno.fm/v5reddyk8rhvv">Lofi Radio</option>
 				<option value="https://stream.zeno.fm/90fvpb27u18uv">Phonk Radio</option>
@@ -94,6 +94,12 @@
 		background: linear-gradient(to bottom, #fff 0%, rgb(143, 144, 157) 100%);
 		background-clip: text;
 	}
+	// .player {
+	// 	position: absolute;
+	// 	top: 50%;
+	// 	left: 50%;
+	// 	transform: translate(-50%, -50%);
+	// }
 	.station-select {
 		padding: 0.3rem 0.5rem;
 		border-radius: 0.5rem;
