@@ -101,7 +101,10 @@
 		transform: translate(-50%, -50%);
 		border-radius: 50%;
 		filter: blur(200px);
-
+		@media (width < 768px) {
+			width: 100%;
+			height: 70%;
+		}
 	}
 	h1 {
 		color: transparent;
