@@ -128,6 +128,7 @@
 		// color: transparent;
 		font-size: clamp(7rem, 20vw, 28rem);
 		font-family: 'Azeret Mono', monospace;
+		font-feature-settings: "tnum";
 		@media screen and (width < 640px) {
 			font-size: 13rem;
 		}
