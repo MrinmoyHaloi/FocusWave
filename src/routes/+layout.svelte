@@ -51,9 +51,10 @@
 		<span
 			class="left-1/2 top-1/2 flex flex-wrap items-center gap-x-1 gap-y-2 max-md:mt-3 md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:flex-col">
 			<select class="station-select me-2" bind:this={streamSelect} onchange={handleStreamChange}>
-				<option value="https://stream.zeno.fm/v5reddyk8rhvv">Lofi Radio</option>
-				<option value="https://stream.zeno.fm/90fvpb27u18uv">Phonk Radio</option>
-				<option value="https://stream.zeno.fm/dhen0gaenzzuv">Synthwave Radio</option>
+				<option value="https://radio.loficafe.net/listen/working/radio.mp3">Lofi Cafe - Working</option>
+				<option value="https://radio.loficafe.net/listen/studying/radio.mp3">Lofi Cafe - Studying</option>
+				<option value="https://radio.loficafe.net/listen/chilling/radio.mp3">Lofi Cafe - Chilling</option>
+				<option value="https://lissen.to/stream/nightride.mp3">Nightride - Synthwave</option>
 			</select>
 			<div class="flex gap-1">
 				<div>{streamState}</div>
