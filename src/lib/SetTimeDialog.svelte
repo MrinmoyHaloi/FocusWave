@@ -64,7 +64,7 @@
 		border-radius: 1rem;
 		box-shadow: 0 0 40px #18d9fb29;
 		border: rgba(44, 44, 44, 0.8) solid 3px;
-		background: radial-gradient(at 50% -10%, rgba(63, 63, 63, 0.9) 0%, rgb(17, 17, 17, 0.95) 100%);
+		background: radial-gradient(at 50% -10%, rgba(63, 63, 63, 1) 0%, rgb(17, 17, 17, 0.95) 100%);
 		.container {
 			display: flex;
 			flex-direction: column;
