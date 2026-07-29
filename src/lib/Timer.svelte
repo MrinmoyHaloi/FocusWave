@@ -88,7 +88,7 @@
 			class="controls bottom-0 left-1/2 flex justify-center px-4 text-5xl text-black max-sm:absolute max-sm:-translate-x-1/2 max-sm:translate-y-20 sm:flex-col max-sm:w-40 sm:w-20 md:w-24">
 			<button onclick={toggleTimer} class="play">
 				{#if timerStatus == 'paused'}
-					<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" viewBox="0 0 16 16" style="padding-left: 2px;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" viewBox="-0.5 0 16 16">
 						<path
 							fill="currentColor"
 							d="m11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
@@ -125,10 +125,8 @@
 		--number-flow-char-height: 0.8em;
 	}
 	.timer {
-		// color: transparent;
 		font-size: clamp(7rem, 20vw, 28rem);
-		font-family: 'Azeret Mono', monospace;
-		font-feature-settings: "tnum";
+		font-variant-numeric: tabular-nums;
 		@media screen and (width < 640px) {
 			font-size: 13rem;
 		}
@@ -163,5 +161,8 @@
 				scale: 0.8;
 			}
 		}
+	}
+	number-flow-svelte::part(digit) {
+		padding: 0.5rem;
 	}
 </style>
