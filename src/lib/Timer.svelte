@@ -6,7 +6,7 @@
 	import { onMount } from 'svelte';
 	import { animate } from 'motion';
 
-	let min = $state(1);
+	let min = $state(15);
 	let sec = $state(0);
 
 	// Add temp values for the form

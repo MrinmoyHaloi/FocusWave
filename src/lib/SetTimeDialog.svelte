@@ -149,7 +149,7 @@
 			<div class="flex justify-end">
 				<button
 					type="submit"
-					class="start-btn mt-4 rounded-full border border-slate-700 px-4 py-2 text-white">
+					class="start-btn mt-4 rounded-full border border-slate-700 px-4 py-2 text-white hover:opacity-85">
 					Save
 				</button>
 			</div>
