@@ -27,7 +27,7 @@
 	}
 </script>
 
-<dialog bind:this={dialog} style="view-transition-name: dialog;z-index: 99;" open>
+<dialog bind:this={dialog} style="view-transition-name: dialog;">
 	<div class="flex justify-between">
 		<h1 class="text-2xl font-medium">Change Focus</h1>
 		<button class="hover:opacity-75" onclick={close}>
