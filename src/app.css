@@ -1,7 +1,18 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer base {
+  dialog {
+    margin: auto;
+  }
+}
 
 * {
 	&:focus {
@@ -19,7 +30,7 @@ body {
 }
 
 body {
-	color: theme('colors.white');
+	color: var(--color-white);
 	font-family: 'Outfit', sans-serif;
 	background-color: #131313;
 	overflow: hidden;
@@ -53,4 +64,8 @@ body {
 
 ::view-transition-new(dialog) {
 	animation: 150ms fade-in ease-in-out forwards;
+}
+
+input, textarea {
+	background-color: #3b3b3b;
 }

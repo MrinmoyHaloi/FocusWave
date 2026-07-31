@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.scss';
+	import '../app.css';
 	import { onMount } from 'svelte';
 	/**
 	 * @typedef {Object} Props
