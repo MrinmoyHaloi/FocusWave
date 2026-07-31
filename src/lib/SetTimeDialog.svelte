@@ -4,6 +4,8 @@
 	let dialog;
 
 	export function open() {
+		min = tempMin;
+		sec = tempSec;
 		if (!document.startViewTransition) {
 			dialog.showModal();
 			return;

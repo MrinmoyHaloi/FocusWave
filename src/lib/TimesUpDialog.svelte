@@ -73,7 +73,7 @@
 
 <style lang="scss">
 	dialog {
-		max-width: 35rem;
+		max-width: 25rem;
 		padding: 1.5rem;
 		box-shadow: 0 0 40px #18d9fb29;
 		text-align: center;

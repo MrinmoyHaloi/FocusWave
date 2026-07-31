@@ -12,6 +12,11 @@
 	let work = $state('');
 	let note = $state('');
 
+	let min = $state(0);
+	let sec = $state(0);
+
+	let ready = $state(false);
+
 	let workDialog;
 
 	function changeWork() {
@@ -26,6 +31,9 @@
 		// get the work and note from localStorage and set the workElement textContent to the work
 		work = localStorage.getItem('work') || 'Creating FocusWave design';
 		note = localStorage.getItem('note');
+		min = parseInt(localStorage.getItem('lastMin')) || 10;
+		sec = parseInt(localStorage.getItem('lastSec')) || 10;
+		ready = true;
 		workElement.textContent = work;
 	});
 </script>
@@ -42,6 +50,6 @@
 			</button>
 		</span>
 	</div>
-	<Timer />
+	<Timer {min} {sec} {ready}/>
 </main>
 <div class="mb-auto"></div>

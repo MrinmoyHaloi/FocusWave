@@ -3,25 +3,22 @@
 	import SetTimeDialog from '$lib/SetTimeDialog.svelte';
 	import NumberFlow, { NumberFlowGroup } from '@number-flow/svelte';
 
-	import { onMount } from 'svelte';
-	import { animate } from 'motion';
-
-	let min = $state(15);
-	let sec = $state(0);
+	let { min, sec, ready } = $props();
 
 	// Add temp values for the form
-	let tempMin = min;
-	let tempSec = sec;
+	let tempMin = $state(min);
+	let tempSec = $state(sec);
+
+	$effect(() => {
+		tempMin = min;
+		tempSec = sec;
+	});
 
 	let timesUpDialog;
 	let setTimeDialog;
 
-	let totalTime = $derived(min * 60 + sec);
-
 	let interval;
 	let timerStatus = $state('paused');
-
-	onMount(() => {});
 
 	// toggle the timer
 	const toggleTimer = () => {
@@ -29,8 +26,8 @@
 		if (timerStatus == 'done') {
 			// if the timer is done, reset the timer
 			// console.log('Resetting timer');
-			min = 1;
-			sec = 0;
+			min = tempMin;
+			sec = tempSec;
 			timerStatus = 'paused';
 			return;
 		}
@@ -73,6 +70,8 @@
 		event.preventDefault();
 		min = tempMin;
 		sec = tempSec;
+		localStorage.setItem('lastMin', min);
+		localStorage.setItem('lastSec', sec);
 		setTimeDialog.close();
 	}
 	// supa hot code
@@ -81,11 +80,11 @@
 <TimesUpDialog bind:this={timesUpDialog} {toggleTimer} />
 <SetTimeDialog bind:this={setTimeDialog} {handleSetTimeSubmit} bind:tempMin bind:tempSec />
 
-<div class="timer flex h-fit text-center text-6xl font-bold max-sm:flex-col">
+<div class="timer flex h-fit text-center text-6xl font-bold max-sm:flex-col transition" style:opacity={ready ? '100%' : '0%'}>
 	<NumberFlowGroup>
 		<NumberFlow value={min} format={{ minimumIntegerDigits: 2 }} />
 		<div
-			class="controls bottom-0 left-1/2 flex justify-center px-4 text-5xl text-black max-sm:absolute max-sm:-translate-x-1/2 max-sm:translate-y-20 sm:flex-col max-sm:w-40 sm:w-20 md:w-24">
+			class="controls bottom-0 left-1/2 flex justify-center px-4 text-5xl text-black max-sm:absolute max-sm:w-40 max-sm:-translate-x-1/2 max-sm:translate-y-20 sm:w-20 sm:flex-col md:w-24">
 			<button onclick={toggleTimer} class="play">
 				{#if timerStatus == 'paused'}
 					<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" viewBox="-0.5 0 16 16">

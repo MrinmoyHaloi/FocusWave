@@ -29,12 +29,12 @@
 
 <dialog bind:this={dialog} style="view-transition-name: dialog;">
 	<div class="flex justify-between">
-		<h1 class="text-2xl font-medium">Change Focus</h1>
+		<h2 class="text-2xl font-medium">Change Focus</h2>
 		<button class="hover:opacity-75" onclick={close}>
 			<Icon icon="mdi:close" width="1.25rem" height="1.25rem" />
 		</button>
 	</div>
-	<div class="-mx-8 mb-5 mt-6 h-[3px]" style="background-color: rgba(44, 44, 44, 0.8);"></div>
+	<div class="-mx-6 mb-5 mt-6 h-[3px]" style="background-color: rgba(44, 44, 44, 0.8);"></div>
 
 	<p class="text-sm text-gray-400">Change your focus here and add notes</p>
 	<div class="mt-2 grid gap-3 *:items-center">
@@ -70,7 +70,7 @@
 <style lang="scss">
 	dialog {
 		max-width: 30rem;
-		padding: 1.5rem 2rem;
+		padding: 1.5rem ;
 		border-radius: 1rem;
 		box-shadow: 0 0 40px #18d9fb29;
 		border: rgba(44, 44, 44, 0.8) solid 3px;
