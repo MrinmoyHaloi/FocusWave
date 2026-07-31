@@ -31,8 +31,8 @@
 		// get the work and note from localStorage and set the workElement textContent to the work
 		work = localStorage.getItem('work') || 'Creating FocusWave design';
 		note = localStorage.getItem('note');
-		min = parseInt(localStorage.getItem('lastMin')) || 10;
-		sec = parseInt(localStorage.getItem('lastSec')) || 10;
+		min = parseInt(localStorage.getItem('lastMin')) || 15;
+		sec = parseInt(localStorage.getItem('lastSec')) || 30;
 		ready = true;
 		workElement.textContent = work;
 	});
