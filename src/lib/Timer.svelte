@@ -80,7 +80,9 @@
 <TimesUpDialog bind:this={timesUpDialog} {toggleTimer} />
 <SetTimeDialog bind:this={setTimeDialog} {handleSetTimeSubmit} bind:tempMin bind:tempSec />
 
-<div class="timer flex h-fit text-center text-6xl font-bold max-sm:flex-col transition" style:opacity={ready ? '100%' : '0%'}>
+<div
+	class="timer flex h-fit text-center text-6xl font-bold transition max-sm:flex-col"
+	style:opacity={ready ? '100%' : '0%'}>
 	<NumberFlowGroup>
 		<NumberFlow value={min} format={{ minimumIntegerDigits: 2 }} />
 		<div
@@ -118,10 +120,9 @@
 	</NumberFlowGroup>
 </div>
 
-<style lang="scss" :global>
-	main {
+<style lang="scss">
+	:global(main) {
 		--number-flow-mask-height: 0.1em;
-		--number-flow-char-height: 0.8em;
 	}
 	.timer {
 		font-size: clamp(7rem, 20vw, 28rem);
@@ -143,7 +144,6 @@
 		.edit {
 			color: white;
 			background: linear-gradient(to bottom, rgba(148, 148, 148, 1) 0%, rgba(70, 70, 70, 1) 100%);
-			// padding: 10px;
 		}
 		button {
 			background: white;
@@ -161,7 +161,10 @@
 			}
 		}
 	}
-	number-flow-svelte::part(digit) {
+	:global(number-flow-svelte::part(digit)) {
 		padding: 0.5rem;
+	}
+	:global(number-flow-svelte) {
+		line-height: 0.8;
 	}
 </style>
