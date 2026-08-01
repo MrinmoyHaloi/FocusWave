@@ -34,7 +34,7 @@
 			<Icon icon="mdi:close" width="1.25rem" height="1.25rem" />
 		</button>
 	</div>
-	<div class="-mx-6 mb-5 mt-6 h-[3px]" style="background-color: rgba(44, 44, 44, 0.8);"></div>
+	<div class="-mx-6 mb-5 mt-6 h-0.75" style="background-color: rgba(44, 44, 44, 0.8);"></div>
 
 	<p class="text-sm text-gray-400">Change your focus here and add notes</p>
 	<div class="mt-2 grid gap-3 *:items-center">

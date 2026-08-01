@@ -49,7 +49,7 @@
 <dialog bind:this={dialog} style="view-transition-name: dialog;">
 	<div class="flex flex-col">
 		<h2 class="text-2xl font-medium">Time's up!</h2>
-		<div class="-mx-6 mb-5 mt-6 h-[3px]" style="background-color: rgba(44, 44, 44, 0.8);"></div>
+		<div class="-mx-6 mb-5 mt-6 h-0.75" style="background-color: rgba(44, 44, 44, 0.8);"></div>
 		<div class="flex flex-col">
 			<p class="text-lg text-gray-300">
 				You have completed your focus session. Take a break and relax for a while or start again.

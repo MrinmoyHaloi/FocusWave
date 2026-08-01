@@ -68,7 +68,7 @@
 				<Icon icon="mdi:close" width="1.25rem" height="1.25rem" />
 			</button>
 		</div>
-		<div class="-mx-6 mt-6 mb-5 h-[3px]" style="background-color: rgba(44, 44, 44, 0.8);"></div>
+		<div class="-mx-6 mt-6 mb-5 h-0.75" style="background-color: rgba(44, 44, 44, 0.8);"></div>
 		<form onsubmit={handleSetTimeSubmit}>
 			<div class="mb-2 flex text-2xl text-[#969696] *:flex-1">
 				<span>mm</span>
