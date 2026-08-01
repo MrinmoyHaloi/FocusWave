@@ -120,7 +120,7 @@
 	</NumberFlowGroup>
 </div>
 
-<style lang="scss">
+<style>
 	:global(main) {
 		--number-flow-mask-height: 0.1em;
 	}
@@ -148,7 +148,6 @@
 		button {
 			background: white;
 			border-radius: 50%;
-			// padding: 0.5rem;
 			transition: 0.2s;
 			box-shadow: 0 0 10px #0000005b;
 			&:hover {
@@ -156,7 +155,6 @@
 				box-shadow: 0 0 50px rgba(223, 223, 223, 0.45);
 			}
 			@media screen and (width < 768px) {
-				// padding: 0.3rem;
 				scale: 0.8;
 			}
 		}

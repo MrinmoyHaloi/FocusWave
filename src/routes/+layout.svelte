@@ -91,7 +91,7 @@
 </div>
 {@render children?.()}
 
-<style lang="scss">
+<style>
 	.glow {
 		position: absolute;
 		background-color: rgba(18, 23, 179, 0.7);

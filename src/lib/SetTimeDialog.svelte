@@ -159,7 +159,7 @@
 	</div>
 </dialog>
 
-<style lang="scss">
+<style>
 	dialog {
 		max-width: 30rem;
 		padding: 1.5rem;
